@@ -24,7 +24,7 @@ const products = [
     description:
       '采用中医药食同源技术，研发高效的减重代餐食品，体现"减重+营养+功能性（降脂、除湿等）"。产品涵盖瘦身代餐奶昔（咖啡、红豆薏苡仁、黑芝麻等口味）、代餐粥、瘦身茶饮及降脂软糖，大众与高档系列并行，低热量高营养，满足用户在瘦身过程中的营养需求。',
     features: ['中医药食同源技术', '大众+高档双系列', '奶昔/粥/茶饮/软糖', '低热量高营养', '降脂除湿功能性', '驼奶高档配方'],
-    highlight: '囊泡技术加持，减重同时调养体质',
+    highlight: '药食同源技术加持，减重同时调养体质',
   },
   {
     id: 'app',
@@ -57,7 +57,7 @@ export function BusinessSection() {
       ([entry]) => {
         if (entry.isIntersecting) setVisible(true);
       },
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -67,8 +67,12 @@ export function BusinessSection() {
     <section
       id="business"
       ref={ref}
-      className="scroll-mt-24 relative py-24 lg:py-32"
+      className="scroll-mt-24 relative overflow-hidden py-24 lg:py-32"
     >
+      {/* Floating decorations */}
+      <div className="pointer-events-none absolute top-40 -left-20 h-[300px] w-[300px] rounded-full bg-primary/4 blur-3xl animate-float-slow" />
+      <div className="pointer-events-none absolute bottom-20 -right-20 h-[250px] w-[250px] rounded-full bg-primary/3 blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+
       <div className="mx-auto max-w-7xl px-6">
         <div
           className={`mb-12 text-center transition-all duration-700 ease-out ${
@@ -91,32 +95,37 @@ export function BusinessSection() {
         {/* Flywheel diagram */}
         <div
           className={`mb-16 transition-all duration-700 ease-out delay-100 ${
-            visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+            visible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-6 opacity-0 scale-95'
           }`}
         >
-          <div className="mx-auto max-w-3xl rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/5 to-primary/2 p-8 text-center">
-            <h3 className="mb-4 text-lg font-bold text-foreground">业务飞轮效应</h3>
-            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-0">
+          <div className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/5 to-primary/2 p-8 text-center">
+            {/* Shimmer effect */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent animate-shimmer" style={{ animationDuration: '5s' }} />
+            
+            <h3 className="relative mb-6 text-lg font-bold text-foreground">业务飞轮效应</h3>
+            <div className="relative flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-0">
               {[
-                { label: 'App', role: '"大脑"', desc: '用户入口+数据中枢' },
-                { label: '代餐', role: '"供给"', desc: '高频变现+复购' },
-                { label: '硬件', role: '"传感器"', desc: '精准数据+高客单' },
+                { label: 'App', role: '"大脑"', desc: '用户入口+数据中枢', color: 'from-primary/15 to-primary/8' },
+                { label: '代餐', role: '"供给"', desc: '高频变现+复购', color: 'from-primary/12 to-primary/6' },
+                { label: '硬件', role: '"传感器"', desc: '精准数据+高客单', color: 'from-primary/10 to-primary/4' },
               ].map((item, i) => (
                 <div key={item.label} className="flex items-center gap-3">
-                  <div className="flex flex-col items-center rounded-xl border border-primary/20 bg-card px-6 py-4">
+                  <div className={`group flex flex-col items-center rounded-xl border border-primary/20 bg-gradient-to-br ${item.color} px-6 py-4 transition-all duration-300 hover:scale-105 hover:shadow-md hover:border-primary/30`}>
                     <span className="text-lg font-bold text-primary">{item.label}</span>
                     <span className="text-xs text-muted-foreground">{item.role}</span>
                     <span className="mt-1 text-xs text-muted-foreground">{item.desc}</span>
                   </div>
                   {i < 2 && (
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="hidden h-5 w-5 text-primary/40 sm:block">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
+                    <div className="hidden items-center sm:flex">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5 text-primary/40 animate-pulse">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </div>
                   )}
                 </div>
               ))}
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
+            <p className="relative mt-4 text-sm text-muted-foreground">
               三者相辅相成，形成生态链解决方案，构建差异化竞争壁垒
             </p>
           </div>
@@ -128,25 +137,27 @@ export function BusinessSection() {
             <Card
               id={product.id}
               key={product.title}
-              className={`scroll-mt-24 overflow-hidden border-border/50 transition-all duration-700 ease-out ${
+              className={`scroll-mt-24 group overflow-hidden border-border/50 transition-all duration-700 ease-out hover:shadow-lg hover:border-primary/20 ${
                 visible
                   ? 'translate-y-0 opacity-100'
-                  : 'translate-y-8 opacity-0'
+                  : i % 2 === 0 ? 'translate-x-8 opacity-0' : '-translate-x-8 opacity-0'
               }`}
               style={{ transitionDelay: `${(i + 1) * 150}ms` }}
             >
               <CardContent className="p-0">
                 <div className="grid md:grid-cols-5">
                   {/* Left: Visual area */}
-                  <div className="flex items-center justify-center bg-gradient-to-br from-primary/8 to-primary/3 p-8 md:col-span-2 md:min-h-[340px]">
-                    <div className="text-center">
+                  <div className={`relative overflow-hidden flex items-center justify-center bg-gradient-to-br from-primary/8 to-primary/3 p-8 md:col-span-2 md:min-h-[340px] transition-all duration-500 group-hover:from-primary/12 group-hover:to-primary/5`}>
+                    {/* Animated ring */}
+                    <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-32 w-32 rounded-full border border-primary/10 animate-pulse-glow" />
+                    <div className="relative text-center">
                       <Badge
                         variant="secondary"
-                        className="mb-4 bg-primary/10 text-primary hover:bg-primary/15"
+                        className="mb-4 bg-primary/10 text-primary hover:bg-primary/15 transition-colors"
                       >
                         {product.tag}
                       </Badge>
-                      <h3 className="text-xl font-bold text-foreground">
+                      <h3 className="text-xl font-bold text-foreground transition-transform duration-300 group-hover:scale-105">
                         {product.title}
                       </h3>
                       <p className="mt-2 text-sm font-medium text-primary">
@@ -164,10 +175,13 @@ export function BusinessSection() {
                       {product.description}
                     </p>
                     <div className="mb-5 flex flex-wrap gap-1.5">
-                      {product.features.map((f) => (
+                      {product.features.map((f, fi) => (
                         <span
                           key={f}
-                          className="inline-flex items-center gap-1 rounded-full border border-primary/15 bg-primary/5 px-2.5 py-0.5 text-xs font-medium text-primary"
+                          className={`group/feat inline-flex items-center gap-1 rounded-full border border-primary/15 bg-primary/5 px-2.5 py-0.5 text-xs font-medium text-primary transition-all duration-300 hover:bg-primary/10 hover:border-primary/25 ${
+                            visible ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
+                          }`}
+                          style={{ transitionDelay: `${(i + 1) * 150 + fi * 50}ms` }}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -185,7 +199,7 @@ export function BusinessSection() {
                         </span>
                       ))}
                     </div>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" className="transition-transform hover:scale-105 active:scale-95">
                       了解更多
                     </Button>
                   </div>
@@ -194,8 +208,6 @@ export function BusinessSection() {
             </Card>
           ))}
         </div>
-
-
       </div>
     </section>
   );

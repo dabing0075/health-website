@@ -45,16 +45,16 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-sm'
           : 'bg-transparent'
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold text-primary">有靓又健</span>
-          <span className="hidden text-xs text-muted-foreground sm:inline">
+        <Link href="/" className="flex items-center gap-2 group">
+          <span className="text-xl font-bold text-primary transition-transform duration-300 group-hover:scale-105">有靓又健</span>
+          <span className="hidden text-xs text-muted-foreground transition-opacity duration-300 sm:inline group-hover:text-primary/60">
             体重健康科技
           </span>
         </Link>
@@ -71,14 +71,14 @@ export function Navbar() {
               >
                 <Link
                   href={group.href}
-                  className="flex items-center gap-1 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                  className="flex items-center gap-1 rounded-md px-3 py-2 text-sm text-muted-foreground transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
                 >
                   {group.label}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
-                    className={`h-3 w-3 transition-transform ${
+                    className={`h-3 w-3 transition-transform duration-300 ${
                       activeDropdown === group.label ? 'rotate-180' : ''
                     }`}
                   >
@@ -89,33 +89,38 @@ export function Navbar() {
                     />
                   </svg>
                 </Link>
-                {activeDropdown === group.label && (
-                  <div className="absolute left-0 top-full pt-1">
-                    <div className="min-w-[140px] rounded-lg border border-border bg-background/95 backdrop-blur-md py-1 shadow-lg">
-                      {group.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          className="block px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
+                <div
+                  className={`absolute left-0 top-full pt-1 transition-all duration-300 ${
+                    activeDropdown === group.label
+                      ? 'opacity-100 translate-y-0 pointer-events-auto'
+                      : 'opacity-0 -translate-y-2 pointer-events-none'
+                  }`}
+                >
+                  <div className="min-w-[140px] rounded-lg border border-border bg-background/95 backdrop-blur-md py-1 shadow-lg">
+                    {group.children.map((child, i) => (
+                      <Link
+                        key={child.label}
+                        href={child.href}
+                        className="block px-4 py-2 text-sm text-muted-foreground transition-all duration-200 hover:bg-accent hover:text-accent-foreground hover:translate-x-1"
+                        style={{ transitionDelay: activeDropdown === group.label ? `${i * 30}ms` : '0ms' }}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
                   </div>
-                )}
+                </div>
               </div>
             ) : (
               <Link
                 key={group.label}
                 href={group.href}
-                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
               >
                 {group.label}
               </Link>
             )
           )}
-          <Button size="sm" className="ml-3" asChild>
+          <Button size="sm" className="ml-3 transition-transform hover:scale-105 active:scale-95" asChild>
             <Link href="#contact">关注我们</Link>
           </Button>
         </nav>
@@ -127,17 +132,17 @@ export function Navbar() {
           aria-label="Toggle menu"
         >
           <span
-            className={`h-0.5 w-6 bg-foreground transition-all ${
+            className={`h-0.5 w-6 bg-foreground transition-all duration-300 ${
               mobileOpen ? 'translate-y-2 rotate-45' : ''
             }`}
           />
           <span
-            className={`h-0.5 w-6 bg-foreground transition-all ${
-              mobileOpen ? 'opacity-0' : ''
+            className={`h-0.5 w-6 bg-foreground transition-all duration-300 ${
+              mobileOpen ? 'opacity-0 scale-0' : ''
             }`}
           />
           <span
-            className={`h-0.5 w-6 bg-foreground transition-all ${
+            className={`h-0.5 w-6 bg-foreground transition-all duration-300 ${
               mobileOpen ? '-translate-y-2 -rotate-45' : ''
             }`}
           />
@@ -145,8 +150,12 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {mobileOpen && (
-        <nav className="border-b border-border bg-background/95 backdrop-blur-md md:hidden">
+      <div
+        className={`overflow-hidden transition-all duration-500 md:hidden ${
+          mobileOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <nav className="border-b border-border bg-background/95 backdrop-blur-md">
           <div className="mx-auto max-w-7xl px-6 py-4">
             {navGroups.map((group) => (
               <div key={group.label}>
@@ -181,14 +190,14 @@ export function Navbar() {
                 )}
               </div>
             ))}
-            <Button size="sm" className="mt-3 w-full" asChild>
+            <Button size="sm" className="mt-3 w-full transition-transform active:scale-95" asChild>
               <Link href="#contact" onClick={() => setMobileOpen(false)}>
                 关注我们
               </Link>
             </Button>
           </div>
         </nav>
-      )}
+      </div>
     </header>
   );
 }
