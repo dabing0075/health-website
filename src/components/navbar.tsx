@@ -20,6 +20,10 @@ const navGroups = [
     href: '#business',
     children: [
       { label: '核心业务', href: '#business' },
+      { label: '会员服务', href: '#membership' },
+      { label: '代餐营养品', href: '#meal-replacement' },
+      { label: '体重健康管理App', href: '#app' },
+      { label: '智能健康硬件', href: '#hardware' },
     ],
   },
   {

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 
 const products = [
   {
+    id: 'membership',
     tag: '健康瘦身会员服务',
     title: '有靓又健·瘦身管理会员',
     headline: '你不是一个人在战斗，我们全程陪伴',
@@ -16,6 +17,7 @@ const products = [
     highlight: '从检测到跟踪，全周期科学管理',
   },
   {
+    id: 'meal-replacement',
     tag: '代餐营养食品',
     title: '轻享代餐系列',
     headline: '减重+营养+功能性，三效合一',
@@ -25,6 +27,7 @@ const products = [
     highlight: '囊泡技术加持，减重同时调养体质',
   },
   {
+    id: 'app',
     tag: '体重健康科技App',
     title: '体重健康管理App',
     headline: '你的口袋健康管家，数据驱动每一次蜕变',
@@ -34,6 +37,7 @@ const products = [
     highlight: 'App是"大脑"，体重管理的智能中枢',
   },
   {
+    id: 'hardware',
     tag: '智能硬件',
     title: '智能健康硬件',
     headline: '精准感知身体信号，让数据为你导航',
@@ -122,6 +126,7 @@ export function BusinessSection() {
         <div className="space-y-8">
           {products.map((product, i) => (
             <Card
+              id={product.id}
               key={product.title}
               className={`overflow-hidden border-border/50 transition-all duration-700 ease-out ${
                 visible
