@@ -190,31 +190,7 @@ export function BusinessSection() {
           ))}
         </div>
 
-        {/* Target customers */}
-        <div
-          className={`mt-16 rounded-2xl border border-border bg-card p-8 transition-all duration-700 ease-out ${
-            visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-          }`}
-          style={{ transitionDelay: '800ms' }}
-        >
-          <h3 className="mb-6 text-xl font-bold text-foreground">目标客户</h3>
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-xl border border-primary/10 bg-primary/5 p-6">
-              <div className="mb-2 text-sm font-semibold text-primary">核心人群</div>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                18 - 50岁的城市白领，尤其是女性群体，追求健康生活方式及形象管理的中高收入群体。
-                这部分人群具有较强的工作和生活压力，对健康和形象有较高的要求，且有较强的消费能力。
-              </p>
-            </div>
-            <div className="rounded-xl border border-border bg-card p-6">
-              <div className="mb-2 text-sm font-semibold text-foreground">次核心人群</div>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                其他关注健康与形象的人群（如产后恢复期女性）；关注体重管理与慢性病预防的亚健康人群
-                （例如慢性代谢疾病患者如糖尿病前期）。
-              </p>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   );
