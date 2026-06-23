@@ -4,24 +4,24 @@ import { useEffect, useRef, useState } from 'react';
 
 const cultureValues = [
   {
-    icon: '🌱',
-    title: '成长为先',
-    description: '我们相信，每个人的成长都值得被看见。公司为员工提供系统化的职业发展通道与培训体系，让专业与能力同步提升。',
+    icon: '🔥',
+    title: '以奋斗者为本',
+    description: '重视每一位为事业拼搏的人，让奋斗者获得应有回报。公司为员工提供系统化的职业发展通道与培训体系，让专业与能力同步提升。',
   },
   {
     icon: '🤝',
-    title: '协作共赢',
-    description: '没有完美的个人，只有完美的团队。我们鼓励跨部门协作，用开放的心态拥抱不同观点，共同创造超越个人能力的成果。',
+    title: '诚信、热爱、价值',
+    description: '以诚信立身，以热爱驱动，以价值衡量。我们鼓励跨部门协作，用开放的心态拥抱不同观点，共同创造超越个人能力的成果。',
   },
   {
     icon: '💡',
-    title: '创新驱动',
-    description: '健康行业需要持续创新。我们鼓励试错、拥抱变化，用科技与创意不断优化产品和服务体验。',
+    title: '客户第一',
+    description: '客户第一，员工第二，股东第三。用户的健康是我们存在的意义，从产品设计到服务交付，每一个决策都以用户真实需求为核心出发点。',
   },
   {
     icon: '❤️',
-    title: '用户为本',
-    description: '用户的健康是我们存在的意义。从产品设计到服务交付，每一个决策都以用户真实需求为核心出发点。',
+    title: '诚信敬业·责任进步·简单高效',
+    description: '在工作中秉持诚信，认真履行职责，不断追求进步，同时保持简单高效的工作方式，减少冗余，专注于价值创造。',
   },
 ];
 
@@ -50,6 +50,12 @@ const positions = [
     type: '全职',
   },
   {
+    title: 'AI算法工程师',
+    dept: '技术部',
+    location: '西安',
+    type: '全职',
+  },
+  {
     title: '产品经理',
     dept: '产品部',
     location: '西安',
@@ -58,6 +64,12 @@ const positions = [
   {
     title: '新媒体运营',
     dept: '市场部',
+    location: '西安',
+    type: '全职',
+  },
+  {
+    title: '食品研发工程师',
+    dept: '食品研发部',
     location: '西安',
     type: '全职',
   },
@@ -113,7 +125,7 @@ export function CultureSection() {
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
                 <div className="mb-4 text-3xl">{item.icon}</div>
-                <h3 className="mb-2 text-lg font-semibold text-card-foreground">
+                <h3 className="mb-2 text-base font-semibold text-card-foreground">
                   {item.title}
                 </h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">

@@ -27,19 +27,21 @@ export function HeroSection() {
       >
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm text-primary">
           <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-          健康体重管理 · 科学生活方式
+          科学瘦身 · 健康生活方式
         </div>
 
         <h1 className="mb-6 text-4xl leading-tight font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
           有靓又健
           <br />
-          <span className="text-primary">让健康成为一种轻盈的生活方式</span>
+          <span className="text-primary">让人们健康美丽生活</span>
         </h1>
 
-        <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          有靓又健（西安）健康科技有限公司，专注于健康体重管理及健康生活方式管理。
-          我们以科学为根基，以代餐营养品和会员服务体系，帮助每一位用户实现
-          <strong className="text-foreground">有靓又健</strong>的理想状态。
+        <p className="mx-auto mb-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          有靓又健（西安）健康科技有限公司，通过"科学管理 + 个性化服务 + 智能科技"三位一体的模式，
+          为用户提供体重管理、体态优化、营养规划及营养瘦身食品支持的全周期解决方案，拒绝极端减肥。
+        </p>
+        <p className="mx-auto mb-10 text-base font-medium text-foreground/80">
+          Beauty Meets Wellness — 让美丽与健康相遇
         </p>
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -54,9 +56,9 @@ export function HeroSection() {
         {/* Stats */}
         <div className="mt-16 grid grid-cols-3 gap-8 border-t border-border pt-10">
           {[
-            { value: '10万+', label: '服务用户' },
-            { value: '98%', label: '客户满意度' },
-            { value: '50+', label: '营养专家团队' },
+            { value: '4大', label: '产品服务体系' },
+            { value: '4亿+', label: '中国超重肥胖人群' },
+            { value: '15%', label: '市场年增长率' },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-2xl font-bold text-primary sm:text-3xl">

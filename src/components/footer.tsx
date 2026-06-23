@@ -7,12 +7,14 @@ const footerLinks = {
     { label: '公司介绍', href: '#about' },
     { label: '使命愿景', href: '#mission' },
     { label: '企业文化', href: '#culture' },
+    { label: '专家团队', href: '#about' },
     { label: '加入我们', href: '#join' },
   ],
   核心业务: [
-    { label: '代餐营养品', href: '#business' },
-    { label: '体重管理会员', href: '#business' },
-    { label: '健康管理咨询', href: '#business' },
+    { label: '健康瘦身会员', href: '#business' },
+    { label: '代餐营养食品', href: '#business' },
+    { label: '体重健康App', href: '#business' },
+    { label: '智能健康硬件', href: '#business' },
   ],
   关注我们: [
     { label: '微信公众号', href: '#contact' },
@@ -39,9 +41,11 @@ export function Footer() {
               有靓又健（西安）健康科技有限公司
               <br />
               专注于健康体重管理及健康生活方式管理
+              <br />
+              <span className="text-xs">科学瘦身 · 健康生活</span>
             </p>
             <div className="mt-4 flex gap-3">
-              {/* Social icons - WeChat */}
+              {/* WeChat */}
               <a
                 href="#contact"
                 className="flex h-9 w-9 items-center justify-center rounded-lg border border-border/50 text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
@@ -69,6 +73,16 @@ export function Footer() {
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
                   <path d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.739 5.443zM9.05 17.219c-.384.616-1.208.884-1.829.602-.612-.279-.793-.991-.406-1.593.379-.595 1.176-.861 1.793-.583.631.283.827.989.442 1.574zm1.27-1.627c-.141.237-.449.353-.689.253-.236-.09-.307-.366-.165-.601.14-.234.44-.349.676-.255.24.09.315.363.178.603zm.176-2.719c-1.893-.493-4.033.45-4.857 2.118-.836 1.704-.026 3.591 1.886 4.21 1.983.642 4.318-.341 5.132-2.126.8-1.74-.108-3.689-2.161-4.202zm8.703-1.681c-.347-.095-.588-.168-.41-.602.396-.967.443-1.803.005-2.407-.827-1.141-3.094-1.08-5.692-.034 0 0-.82.35-.612-.285.401-1.279.343-2.349-.281-2.963-1.389-1.365-5.072.063-8.222 3.194C.548 10.364-.263 13.418.698 15.894c1.854 4.783 7.066 7.694 12.27 7.106 5.239-.593 8.714-4.574 8.714-8.297 0-2.318-1.36-3.573-2.453-3.511z" />
+                </svg>
+              </a>
+              {/* Xiaohongshu */}
+              <a
+                href="#contact"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-border/50 text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
+                aria-label="小红书"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
                 </svg>
               </a>
             </div>
@@ -103,7 +117,7 @@ export function Footer() {
               © {new Date().getFullYear()} 有靓又健（西安）健康科技有限公司 版权所有
             </p>
             <p className="text-xs text-muted-foreground">
-              陕ICP备XXXXXXXX号
+              科学瘦身 · 健康生活
             </p>
           </div>
         </div>
