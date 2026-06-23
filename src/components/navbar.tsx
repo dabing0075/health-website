@@ -53,7 +53,7 @@ export function Navbar() {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold text-primary">有靓又健</span>
+          <span className="text-xl font-bold text-primary">靓健时代</span>
           <span className="hidden text-xs text-muted-foreground sm:inline">
             体重健康科技
           </span>
