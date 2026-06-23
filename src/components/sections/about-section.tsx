@@ -195,8 +195,8 @@ export function AboutSection() {
               </p>
               <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
                 <Image
-                  src="/business-yoga.jpeg"
-                  alt="健康生活方式"
+                  src="/about-experts.jpeg"
+                  alt="专家团队"
                   width={800}
                   height={600}
                   className="h-auto w-full object-cover"
