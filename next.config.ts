@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
   /* config options here */
   allowedDevOrigins: ['*.dev.coze.site'],
   images: {
-    qualities: [75, 90],
     remotePatterns: [
       {
         protocol: 'https',

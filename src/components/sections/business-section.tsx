@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -16,7 +15,6 @@ const products = [
       '检测阶段：体脂率、代谢率、基因检测，通过AI算法分析用户基因、代谢率、生活习惯，生成个性化健康档案。定制方案：饮食计划（含每周食谱+代餐产品）、运动课程、相关课程。跟踪服务：AI营养师24小时答疑，每周专家视频面诊。智能设备联动：体脂秤、手环实时监测数据，动态调整方案。线下各类主题俱乐部。',
     features: ['AI算法个性化方案', '24小时AI营养师', '每周专家视频面诊', '智能设备实时监测', '线下主题俱乐部', '动态调整方案'],
     highlight: '从检测到跟踪，全周期科学管理',
-    image: '/hero-gym.jpeg',
   },
   {
     id: 'meal-replacement',
@@ -26,8 +24,7 @@ const products = [
     description:
       '采用中医药食同源技术，研发高效的减重代餐食品，体现"减重+营养+功能性（降脂、除湿等）"。产品涵盖瘦身代餐奶昔（咖啡、红豆薏苡仁、黑芝麻等口味）、代餐粥、瘦身茶饮及降脂软糖，大众与高档系列并行，低热量高营养，满足用户在瘦身过程中的营养需求。',
     features: ['中医药食同源技术', '大众+高档双系列', '奶昔/粥/茶饮/软糖', '低热量高营养', '降脂除湿功能性', '驼奶高档配方'],
-    highlight: '药食同源技术加持，减重同时调养体质',
-    image: '/meal-products.jpeg',
+    highlight: '囊泡技术加持，减重同时调养体质',
   },
   {
     id: 'app',
@@ -38,7 +35,6 @@ const products = [
       'App设有健康体重指标跟踪模块、自我健康成长知识库（免费）、线上靓健圈社区、线上商城（销售低GI食品、运动器械等自营/联名产品）、会员中心（打卡积分制+用户成长体系，游戏化运营系统）。用户可方便地管理健康和体重，获取健康知识，参与社区互动，购买相关产品和服务。',
     features: ['健康指标跟踪', '免费知识库', '靓健圈社区', '线上商城', '打卡积分制', '游戏化成长体系'],
     highlight: 'App是"大脑"，体重管理的智能中枢',
-    image: '/app-tech.jpeg',
   },
   {
     id: 'hardware',
@@ -49,7 +45,6 @@ const products = [
       '智能体脂秤、瘦身手环（硬件销售或租赁），实时监测用户的健康数据，为用户提供更精准的健康管理和瘦身指导。硬件产生的数据反哺App，使AI建议更精准，形成体验闭环。智能穿戴设备+APP实时监测数据，提升用户粘性。',
     features: ['智能体脂秤', '瘦身手环', '实时数据监测', 'App数据联动', '销售或租赁模式', '提升用户粘性'],
     highlight: '硬件是"传感器"，精准感知每一次变化',
-    image: '/app-tech.jpeg',
   },
 ];
 
@@ -72,7 +67,7 @@ export function BusinessSection() {
     <section
       id="business"
       ref={ref}
-      className="scroll-mt-24 relative bg-gradient-to-b from-muted/30 via-background to-background py-24 lg:py-32"
+      className="scroll-mt-24 relative py-24 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6">
         <div
@@ -142,33 +137,27 @@ export function BusinessSection() {
             >
               <CardContent className="p-0">
                 <div className="grid md:grid-cols-5">
-                  {/* Left: Product image */}
-                  <div className="relative min-h-[240px] md:col-span-2">
-                    <Image
-                      src={product.image}
-                      alt={product.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 40vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/10 md:bg-gradient-to-l" />
-                    <Badge
-                      variant="secondary"
-                      className="absolute top-4 left-4 bg-background/80 text-primary backdrop-blur-sm hover:bg-background/90"
-                    >
-                      {product.tag}
-                    </Badge>
+                  {/* Left: Visual area */}
+                  <div className="flex items-center justify-center bg-gradient-to-br from-primary/8 to-primary/3 p-8 md:col-span-2 md:min-h-[340px]">
+                    <div className="text-center">
+                      <Badge
+                        variant="secondary"
+                        className="mb-4 bg-primary/10 text-primary hover:bg-primary/15"
+                      >
+                        {product.tag}
+                      </Badge>
+                      <h3 className="text-xl font-bold text-foreground">
+                        {product.title}
+                      </h3>
+                      <p className="mt-2 text-sm font-medium text-primary">
+                        {product.highlight}
+                      </p>
+                    </div>
                   </div>
 
                   {/* Right: Content */}
                   <div className="p-8 md:col-span-3">
-                    <h3 className="mb-1 text-xl font-bold text-card-foreground">
-                      {product.title}
-                    </h3>
-                    <p className="mb-3 text-sm font-medium text-primary">
-                      {product.highlight}
-                    </p>
-                    <h4 className="mb-3 text-base font-semibold text-card-foreground">
+                    <h4 className="mb-3 text-lg font-semibold text-card-foreground">
                       {product.headline}
                     </h4>
                     <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
