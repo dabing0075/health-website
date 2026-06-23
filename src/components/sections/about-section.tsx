@@ -175,54 +175,48 @@ export function AboutSection() {
         {/* Team highlight */}
         <div
           id="team"
-          className={`scroll-mt-24 relative mt-16 overflow-hidden rounded-2xl transition-all duration-700 ease-out delay-500 ${
+          className={`scroll-mt-24 mt-16 transition-all duration-700 ease-out delay-500 ${
             visible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
-          {/* Background image */}
-          <div className="absolute inset-0">
-            <Image
-              src="/about-experts.jpeg"
-              alt="专家团队工作场景"
-              fill
-              sizes="(max-width: 768px) 100vw, 1200px"
-              className="object-cover"
-              priority={false}
-            />
-            {/* Dark overlay for readability */}
-            <div className="absolute inset-0 bg-background/85 backdrop-blur-sm" />
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/5" />
-          </div>
+          <h3 className="mb-6 text-xl font-bold text-foreground">专家团队</h3>
+          <div className="grid gap-8 lg:grid-cols-2">
+            {/* Team image */}
+            <div className="relative overflow-hidden rounded-2xl">
+              <Image
+                src="/about-experts.jpeg"
+                alt="专家团队工作场景"
+                width={800}
+                height={600}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="h-auto w-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
+            </div>
 
-          {/* Shimmer overlay */}
-          <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent animate-shimmer" style={{ animationDuration: '4s' }} />
-          </div>
-
-          <div className="relative p-8">
-            <div className="mb-6 text-center">
-              <h3 className="mb-2 text-xl font-bold text-foreground">专家团队</h3>
-              <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground">
+            {/* Team text */}
+            <div className="flex flex-col justify-center">
+              <p className="mb-6 text-base leading-relaxed text-muted-foreground">
                 拥有团结有力的人才团队：团队成员有3位专家教授（西安交通大学医学院教授和陕西中医药大学教授），
                 4位博士，有使命感且精通管理和营销的创始人，经验丰富的软件工程师，以及在减肥代餐行业深耕10多年的行业销售人才，
                 形成了集技术、管理、营销为一体的专家创业团队。
               </p>
-            </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {teamMembers.map((member, i) => (
-                <div
-                  key={member.name}
-                  className={`group rounded-xl border border-border/50 bg-card/90 p-4 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-md hover:border-primary/20 ${
-                    visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-                  }`}
-                  style={{ transitionDelay: `${700 + i * 100}ms` }}
-                >
-                  <div className="mb-1 text-base font-semibold text-card-foreground transition-colors group-hover:text-primary">{member.name}</div>
-                  <div className="mb-1 text-xs font-medium text-primary">{member.title}</div>
-                  <div className="text-xs text-muted-foreground">{member.desc}</div>
-                </div>
-              ))}
+              <div className="grid gap-4 sm:grid-cols-2">
+                {teamMembers.map((member, i) => (
+                  <div
+                    key={member.name}
+                    className={`group rounded-xl border border-border/50 bg-card/50 p-4 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-md hover:border-primary/20 ${
+                      visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                    }`}
+                    style={{ transitionDelay: `${700 + i * 100}ms` }}
+                  >
+                    <div className="mb-1 text-base font-semibold text-card-foreground transition-colors group-hover:text-primary">{member.name}</div>
+                    <div className="mb-1 text-xs font-medium text-primary">{member.title}</div>
+                    <div className="text-xs text-muted-foreground">{member.desc}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
