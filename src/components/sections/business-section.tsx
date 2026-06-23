@@ -67,7 +67,7 @@ export function BusinessSection() {
     <section
       id="business"
       ref={ref}
-      className="relative py-24 lg:py-32"
+      className="scroll-mt-24 relative py-24 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6">
         <div
@@ -128,7 +128,7 @@ export function BusinessSection() {
             <Card
               id={product.id}
               key={product.title}
-              className={`overflow-hidden border-border/50 transition-all duration-700 ease-out ${
+              className={`scroll-mt-24 overflow-hidden border-border/50 transition-all duration-700 ease-out ${
                 visible
                   ? 'translate-y-0 opacity-100'
                   : 'translate-y-8 opacity-0'

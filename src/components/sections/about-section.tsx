@@ -75,7 +75,7 @@ export function AboutSection() {
     <section
       id="about"
       ref={ref}
-      className="relative py-24 lg:py-32"
+      className="scroll-mt-24 relative py-24 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6">
         <div
@@ -134,7 +134,7 @@ export function AboutSection() {
         {/* Team highlight */}
         <div
           id="team"
-          className={`rounded-2xl border border-primary/10 bg-primary/5 p-8 transition-all duration-700 ease-out delay-300 ${
+          className={`scroll-mt-24 rounded-2xl border border-primary/10 bg-primary/5 p-8 transition-all duration-700 ease-out delay-300 ${
             visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >

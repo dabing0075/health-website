@@ -21,7 +21,7 @@ export function MissionSection() {
     <section
       id="mission"
       ref={ref}
-      className="relative overflow-hidden bg-gradient-to-b from-background via-primary/3 to-background py-24 lg:py-32"
+      className="scroll-mt-24 relative overflow-hidden bg-gradient-to-b from-background via-primary/3 to-background py-24 lg:py-32"
     >
       {/* Decorative */}
       <div className="pointer-events-none absolute top-20 right-0 h-[300px] w-[300px] rounded-full bg-primary/5 blur-3xl" />

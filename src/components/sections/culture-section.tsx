@@ -94,7 +94,7 @@ export function CultureSection() {
     <section
       id="culture"
       ref={ref}
-      className="relative bg-gradient-to-b from-background via-primary/3 to-background py-24 lg:py-32"
+      className="scroll-mt-24 relative bg-gradient-to-b from-background via-primary/3 to-background py-24 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6">
         {/* Culture Values */}
@@ -192,7 +192,7 @@ export function JoinSection() {
     <section
       id="join"
       ref={ref}
-      className="relative py-24 lg:py-32"
+      className="scroll-mt-24 relative py-24 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6">
         <div
