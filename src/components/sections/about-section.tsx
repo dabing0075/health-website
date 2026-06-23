@@ -184,7 +184,7 @@ export function AboutSection() {
             {/* Team image */}
             <div className="relative overflow-hidden rounded-2xl">
               <Image
-                src="/about-experts.jpeg"
+                src="/about-experts-v2.jpeg"
                 alt="专家团队工作场景"
                 width={800}
                 height={600}
