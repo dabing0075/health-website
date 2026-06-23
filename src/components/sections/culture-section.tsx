@@ -100,7 +100,7 @@ export function CultureSection() {
       {/* Background image with overlay */}
       <div className="pointer-events-none absolute inset-0">
         <Image
-          src="/team-office.jpeg"
+          src="/fitness-stretch.jpeg"
           alt=""
           fill
           className="object-cover opacity-[0.04]"
