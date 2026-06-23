@@ -133,6 +133,7 @@ export function AboutSection() {
 
         {/* Team highlight */}
         <div
+          id="team"
           className={`rounded-2xl border border-primary/10 bg-primary/5 p-8 transition-all duration-700 ease-out delay-300 ${
             visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}

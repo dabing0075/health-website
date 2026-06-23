@@ -11,7 +11,7 @@ const navGroups = [
     children: [
       { label: '企业简介', href: '#about' },
       { label: '使命愿景', href: '#mission' },
-      { label: '团队', href: '#about' },
+      { label: '团队', href: '#team' },
       { label: '企业文化', href: '#culture' },
     ],
   },
