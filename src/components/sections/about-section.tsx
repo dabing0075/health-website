@@ -123,7 +123,7 @@ export function AboutSection() {
           >
             <div className="relative overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="/about-consultant.jpeg?v=3"
+                src="/about-consultant.jpeg"
                 alt="专业健康管理咨询"
                 width={800}
                 height={600}
@@ -182,7 +182,7 @@ export function AboutSection() {
           {/* Background image */}
           <div className="absolute inset-0">
             <Image
-              src="/about-experts.jpeg?v=3"
+              src="/about-experts.jpeg"
               alt="专家团队工作场景"
               fill
               sizes="(max-width: 768px) 100vw, 1200px"

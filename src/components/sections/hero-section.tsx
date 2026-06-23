@@ -50,7 +50,7 @@ export function HeroSection() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/hero-main.jpeg?v=3"
+          src="/hero-main.jpeg"
           alt="阳光健康生活"
           fill
           priority

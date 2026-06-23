@@ -177,7 +177,7 @@ export function CultureSection() {
             >
               <div className="relative overflow-hidden rounded-2xl shadow-xl">
                 <Image
-                  src="/culture-team.jpeg?v=3"
+                  src="/culture-team.jpeg"
                   alt="团队协作文化"
                   width={800}
                   height={600}
