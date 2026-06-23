@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 const cultureValues = [
   {
@@ -94,9 +95,20 @@ export function CultureSection() {
     <section
       id="culture"
       ref={ref}
-      className="scroll-mt-24 relative bg-gradient-to-b from-background via-primary/3 to-background py-24 lg:py-32"
+      className="scroll-mt-24 relative overflow-hidden py-24 lg:py-32"
     >
-      <div className="mx-auto max-w-7xl px-6">
+      {/* Background image with overlay */}
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src="/team-office.jpeg"
+          alt=""
+          fill
+          className="object-cover opacity-[0.04]"
+          sizes="100vw"
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6">
         {/* Culture Values */}
         <div
           className={`mb-20 transition-all duration-700 ease-out ${
@@ -117,7 +129,7 @@ export function CultureSection() {
             {cultureValues.map((item, i) => (
               <div
                 key={item.title}
-                className={`group rounded-2xl border border-border/50 bg-card p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-md ${
+                className={`group rounded-2xl border border-border/50 bg-card/80 p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-md ${
                   visible
                     ? 'translate-y-0 opacity-100'
                     : 'translate-y-6 opacity-0'
@@ -149,7 +161,7 @@ export function CultureSection() {
             {benefits.map((b) => (
               <div
                 key={b}
-                className="flex items-center gap-3 rounded-xl border border-border/50 bg-card/50 px-4 py-3 text-sm text-card-foreground"
+                className="flex items-center gap-3 rounded-xl border border-border/50 bg-card/80 px-4 py-3 text-sm text-card-foreground backdrop-blur-sm"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -192,8 +204,11 @@ export function JoinSection() {
     <section
       id="join"
       ref={ref}
-      className="scroll-mt-24 relative py-24 lg:py-32"
+      className="scroll-mt-24 relative overflow-hidden py-24 lg:py-32"
     >
+      {/* Decorative background */}
+      <div className="pointer-events-none absolute -top-40 -right-40 h-[400px] w-[400px] rounded-full bg-primary/5 blur-3xl" />
+
       <div className="mx-auto max-w-7xl px-6">
         <div
           className={`mb-12 text-center transition-all duration-700 ease-out ${

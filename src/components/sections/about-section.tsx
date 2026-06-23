@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 
 const coreAdvantages = [
@@ -75,30 +76,55 @@ export function AboutSection() {
     <section
       id="about"
       ref={ref}
-      className="scroll-mt-24 relative py-24 lg:py-32"
+      className="scroll-mt-24 relative overflow-hidden py-24 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6">
-        <div
-          className={`transition-all duration-700 ease-out ${
-            visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-          }`}
-        >
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
-            关于我们
+        {/* Company intro with image */}
+        <div className="mb-16 grid items-center gap-12 lg:grid-cols-2">
+          <div
+            className={`transition-all duration-700 ease-out ${
+              visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+            }`}
+          >
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+              关于我们
+            </div>
+            <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              靓健时代（西安）健康科技有限公司
+            </h2>
+            <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
+              有靓又健是一家专注于健康体重管理的新型科技公司，通过创新科技手段为用户提供专业服务。
+              我们通过"科学管理 + 个性化服务 + 智能科技"三位一体的模式，重新定义瘦身健康，为用户提供
+              体重管理、体态优化、营养规划及营养瘦身食品支持的全周期解决方案，拒绝极端减肥。
+            </p>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              以科学的方法帮助用户实现健康瘦身，满足用户对健康美丽生活的追求，打造"健康美"生活方式。
+              围绕公司核心业务，未来公司将发展为集团公司，下设食品公司、健康管理公司和硬件科技公司，
+              通过多元化发展拓展业务范围，提升公司综合实力。
+            </p>
           </div>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            靓健时代（西安）健康科技有限公司
-          </h2>
-          <p className="mb-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            有靓又健是一家专注于健康体重管理的新型科技公司，通过创新科技手段为用户提供专业服务。
-            我们通过"科学管理 + 个性化服务 + 智能科技"三位一体的模式，重新定义瘦身健康，为用户提供
-            体重管理、体态优化、营养规划及营养瘦身食品支持的全周期解决方案，拒绝极端减肥。
-          </p>
-          <p className="mb-12 max-w-3xl text-base leading-relaxed text-muted-foreground">
-            以科学的方法帮助用户实现健康瘦身，满足用户对健康美丽生活的追求，打造"健康美"生活方式。
-            围绕公司核心业务，未来公司将发展为集团公司，下设食品公司、健康管理公司和硬件科技公司，
-            通过多元化发展拓展业务范围，提升公司综合实力。
-          </p>
+
+          <div
+            className={`relative transition-all duration-700 ease-out delay-200 ${
+              visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+            }`}
+          >
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <Image
+                src="/yoga-sunrise.jpeg"
+                alt="健康生活方式"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+            </div>
+            {/* Decorative floating badge */}
+            <div className="absolute -bottom-4 -left-4 rounded-2xl border border-primary/20 bg-background/90 p-4 shadow-lg backdrop-blur-sm">
+              <div className="text-2xl font-bold text-primary">3+</div>
+              <div className="text-xs text-muted-foreground">位专家教授</div>
+            </div>
+          </div>
         </div>
 
         {/* Core competitiveness */}
@@ -134,30 +160,46 @@ export function AboutSection() {
         {/* Team highlight */}
         <div
           id="team"
-          className={`scroll-mt-24 rounded-2xl border border-primary/10 bg-primary/5 p-8 transition-all duration-700 ease-out delay-300 ${
+          className={`scroll-mt-24 overflow-hidden rounded-2xl border border-primary/10 transition-all duration-700 ease-out delay-300 ${
             visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
-          <h3 className="mb-4 text-xl font-bold text-foreground">专家团队</h3>
-          <p className="mb-6 text-base leading-relaxed text-muted-foreground">
-            拥有团结有力的人才团队：团队成员有3位专家教授（西安交通大学医学院教授和陕西中医药大学教授），
-            4位博士，有使命感且精通管理和营销的创始人，经验丰富的软件工程师，以及在减肥代餐行业深耕10多年的行业销售人才，
-            形成了集技术、管理、营销为一体的专家创业团队。
-          </p>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { name: '卢兵', title: '创始人 / 管理学博士', desc: '西安交通大学管理学院博士，精通组织管理与营销' },
-              { name: '马天有', title: '医学博士 / 教授', desc: '西安交通大学医学院，医学营养学专家' },
-              { name: '张晓叶', title: '医学博士 / 副教授', desc: '陕西中医药大学，药食同源与降脂机制研究' },
-              { name: '左振宇', title: '博士 / 教授', desc: '陕西中医药大学，中药成分提取与药食同源产品开发' },
-              { name: '张瑞', title: '技术负责人', desc: '资深软件工程师，丰富的项目开发与管理经验' },
-            ].map((member) => (
-              <div key={member.name} className="rounded-xl border border-border/50 bg-card/80 p-4">
-                <div className="mb-1 text-base font-semibold text-card-foreground">{member.name}</div>
-                <div className="mb-1 text-xs font-medium text-primary">{member.title}</div>
-                <div className="text-xs text-muted-foreground">{member.desc}</div>
+          <div className="grid lg:grid-cols-5">
+            {/* Team image */}
+            <div className="relative min-h-[240px] lg:col-span-2">
+              <Image
+                src="/team-office.jpeg"
+                alt="专家团队"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-primary/5 lg:bg-gradient-to-l" />
+            </div>
+            {/* Team content */}
+            <div className="bg-primary/5 p-8 lg:col-span-3">
+              <h3 className="mb-4 text-xl font-bold text-foreground">专家团队</h3>
+              <p className="mb-6 text-base leading-relaxed text-muted-foreground">
+                拥有团结有力的人才团队：团队成员有3位专家教授（西安交通大学医学院教授和陕西中医药大学教授），
+                4位博士，有使命感且精通管理和营销的创始人，经验丰富的软件工程师，以及在减肥代餐行业深耕10多年的行业销售人才，
+                形成了集技术、管理、营销为一体的专家创业团队。
+              </p>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { name: '卢兵', title: '创始人 / 管理学博士', desc: '西安交通大学管理学院博士，精通组织管理与营销' },
+                  { name: '马天有', title: '医学博士 / 教授', desc: '西安交通大学医学院，医学营养学专家' },
+                  { name: '张晓叶', title: '医学博士 / 副教授', desc: '陕西中医药大学，药食同源与降脂机制研究' },
+                  { name: '左振宇', title: '博士 / 教授', desc: '陕西中医药大学，中药成分提取与药食同源产品开发' },
+                  { name: '张瑞', title: '技术负责人', desc: '资深软件工程师，丰富的项目开发与管理经验' },
+                ].map((member) => (
+                  <div key={member.name} className="rounded-xl border border-border/50 bg-card/80 p-4">
+                    <div className="mb-1 text-base font-semibold text-card-foreground">{member.name}</div>
+                    <div className="mb-1 text-xs font-medium text-primary">{member.title}</div>
+                    <div className="text-xs text-muted-foreground">{member.desc}</div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
