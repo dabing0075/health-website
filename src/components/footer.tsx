@@ -35,10 +35,10 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <Link href="/" className="inline-block">
-              <span className="text-2xl font-bold text-primary">有靓又健</span>
+              <span className="text-2xl font-bold text-primary">靓健时代</span>
             </Link>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              有靓又健（西安）健康科技有限公司
+              靓健时代（西安）健康科技有限公司
               <br />
               专注于健康体重管理及健康生活方式管理
               <br />
@@ -114,7 +114,7 @@ export function Footer() {
         <div className="mt-12 border-t border-border pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} 有靓又健（西安）健康科技有限公司 版权所有
+              © {new Date().getFullYear()} 靓健时代（西安）健康科技有限公司 版权所有
             </p>
             <p className="text-xs text-muted-foreground">
               科学瘦身 · 健康生活

@@ -87,10 +87,10 @@ export function AboutSection() {
             关于我们
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            有靓又健（西安）健康科技有限公司
+            靓健时代（西安）健康科技有限公司
           </h2>
           <p className="mb-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            有靓又健是一家专注于健康体重管理的新型科技公司，通过创新科技手段为用户提供专业服务。
+            靓健时代是一家专注于健康体重管理的新型科技公司，通过创新科技手段为用户提供专业服务。
             我们通过"科学管理 + 个性化服务 + 智能科技"三位一体的模式，重新定义瘦身健康，为用户提供
             体重管理、体态优化、营养规划及营养瘦身食品支持的全周期解决方案，拒绝极端减肥。
           </p>
