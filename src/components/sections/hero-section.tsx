@@ -31,13 +31,13 @@ export function HeroSection() {
         </div>
 
         <h1 className="mb-6 text-4xl leading-tight font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-          靓健时代
+          有靓又健
           <br />
           <span className="text-primary">让人们健康美丽生活</span>
         </h1>
 
         <p className="mx-auto mb-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          靓健时代（西安）健康科技有限公司，通过"科学管理 + 个性化服务 + 智能科技"三位一体的模式，
+          有靓又健（西安）健康科技有限公司，通过"科学管理 + 个性化服务 + 智能科技"三位一体的模式，
           为用户提供体重管理、体态优化、营养规划及营养瘦身食品支持的全周期解决方案，拒绝极端减肥。
         </p>
         <p className="mx-auto mb-10 text-base font-medium text-foreground/80">
