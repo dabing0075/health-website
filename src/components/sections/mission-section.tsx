@@ -75,7 +75,7 @@ export function MissionSection() {
             </div>
             <h3 className="mb-3 text-xl font-bold text-card-foreground">愿景</h3>
             <p className="text-lg leading-relaxed text-card-foreground">
-              打造世界领先的<span className="font-bold text-primary">一站式瘦身管理及健康生活方式解决方案服务商</span>
+              打造世界领先的<span className="font-bold text-primary">一站式科学体重管理及健康生活方式解决方案服务商</span>
             </p>
           </div>
         </div>
