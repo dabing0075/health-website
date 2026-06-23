@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 const cultureValues = [
   {
@@ -124,48 +125,72 @@ export function CultureSection() {
       <div className="pointer-events-none absolute bottom-1/4 left-5 h-[180px] w-[180px] rounded-full bg-primary/3 blur-3xl animate-float-slow" style={{ animationDelay: '1.5s' }} />
 
       <div className="mx-auto max-w-7xl px-6">
-        {/* Culture Values */}
+        {/* Culture Values with image */}
         <div
           className={`mb-20 transition-all duration-700 ease-out ${
             visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
-            企业文化
-          </div>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            在这里，健康不仅是事业，更是日常
-          </h2>
-          <p className="mb-12 max-w-2xl text-lg text-muted-foreground">
-            我们打造的是一个让每个人都能健康成长的工作环境——无论你是团队伙伴还是服务用户
-          </p>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {cultureValues.map((item, i) => (
-              <div
-                key={item.title}
-                className={`group relative overflow-hidden rounded-2xl border border-border/50 bg-card p-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:border-primary/20 ${
-                  visible
-                    ? 'translate-y-0 opacity-100'
-                    : 'translate-y-8 opacity-0'
-                }`}
-                style={{ transitionDelay: `${i * 120}ms` }}
-              >
-                {/* Hover glow */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 transition-all duration-500 group-hover:from-primary/5 group-hover:to-primary/2" />
-                <div className="relative">
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary/15 group-hover:scale-110 group-hover:rotate-3">
-                    {item.icon}
-                  </div>
-                  <h3 className="mb-2 text-base font-semibold text-card-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {item.description}
-                  </p>
-                </div>
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            {/* Left: values */}
+            <div>
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+                企业文化
               </div>
-            ))}
+              <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                在这里，健康不仅是事业，更是日常
+              </h2>
+              <p className="mb-8 max-w-xl text-lg text-muted-foreground">
+                我们打造的是一个让每个人都能健康成长的工作环境——无论你是团队伙伴还是服务用户
+              </p>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                {cultureValues.map((item, i) => (
+                  <div
+                    key={item.title}
+                    className={`group relative overflow-hidden rounded-xl border border-border/50 bg-card p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-md hover:border-primary/20 ${
+                      visible
+                        ? 'translate-y-0 opacity-100'
+                        : 'translate-y-8 opacity-0'
+                    }`}
+                    style={{ transitionDelay: `${i * 120}ms` }}
+                  >
+                    <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary/15 group-hover:scale-110">
+                      {item.icon}
+                    </div>
+                    <h3 className="mb-1 text-sm font-semibold text-card-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs leading-relaxed text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: image */}
+            <div
+              className={`relative transition-all duration-1000 delay-300 ease-out ${
+                visible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'
+              }`}
+            >
+              <div className="relative overflow-hidden rounded-2xl shadow-xl">
+                <Image
+                  src="/culture-team.jpeg"
+                  alt="团队协作文化"
+                  width={800}
+                  height={600}
+                  className="h-auto w-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
+              </div>
+              {/* Accent card */}
+              <div className="absolute -bottom-3 -right-3 rounded-xl border border-primary/20 bg-background/90 px-4 py-3 shadow-lg backdrop-blur-sm">
+                <div className="text-sm font-semibold text-primary">开放协作</div>
+                <div className="text-xs text-muted-foreground">用健康的心态拥抱多元观点</div>
+              </div>
+            </div>
           </div>
         </div>
 

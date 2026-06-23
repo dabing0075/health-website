@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -15,6 +16,8 @@ const products = [
       '检测阶段：体脂率、代谢率、基因检测，通过AI算法分析用户基因、代谢率、生活习惯，生成个性化健康档案。定制方案：饮食计划（含每周食谱+代餐产品）、运动课程、相关课程。跟踪服务：AI营养师24小时答疑，每周专家视频面诊。智能设备联动：体脂秤、手环实时监测数据，动态调整方案。线下各类主题俱乐部。',
     features: ['AI算法个性化方案', '24小时AI营养师', '每周专家视频面诊', '智能设备实时监测', '线下主题俱乐部', '动态调整方案'],
     highlight: '从检测到跟踪，全周期科学管理',
+    image: '/business-yoga.jpeg',
+    imageAlt: '健康瘦身会员服务',
   },
   {
     id: 'meal-replacement',
@@ -25,6 +28,8 @@ const products = [
       '采用中医药食同源技术，研发高效的减重代餐食品，体现"减重+营养+功能性（降脂、除湿等）"。产品涵盖瘦身代餐奶昔（咖啡、红豆薏苡仁、黑芝麻等口味）、代餐粥、瘦身茶饮及降脂软糖，大众与高档系列并行，低热量高营养，满足用户在瘦身过程中的营养需求。',
     features: ['中医药食同源技术', '大众+高档双系列', '奶昔/粥/茶饮/软糖', '低热量高营养', '降脂除湿功能性', '驼奶高档配方'],
     highlight: '药食同源技术加持，减重同时调养体质',
+    image: '/business-meal.jpeg',
+    imageAlt: '轻享代餐营养食品',
   },
   {
     id: 'app',
@@ -35,6 +40,8 @@ const products = [
       'App设有健康体重指标跟踪模块、自我健康成长知识库（免费）、线上靓健圈社区、线上商城（销售低GI食品、运动器械等自营/联名产品）、会员中心（打卡积分制+用户成长体系，游戏化运营系统）。用户可方便地管理健康和体重，获取健康知识，参与社区互动，购买相关产品和服务。',
     features: ['健康指标跟踪', '免费知识库', '靓健圈社区', '线上商城', '打卡积分制', '游戏化成长体系'],
     highlight: 'App是"大脑"，体重管理的智能中枢',
+    image: '/business-app.jpeg',
+    imageAlt: '体重健康管理App',
   },
   {
     id: 'hardware',
@@ -45,6 +52,8 @@ const products = [
       '智能体脂秤、瘦身手环（硬件销售或租赁），实时监测用户的健康数据，为用户提供更精准的健康管理和瘦身指导。硬件产生的数据反哺App，使AI建议更精准，形成体验闭环。智能穿戴设备+APP实时监测数据，提升用户粘性。',
     features: ['智能体脂秤', '瘦身手环', '实时数据监测', 'App数据联动', '销售或租赁模式', '提升用户粘性'],
     highlight: '硬件是"传感器"，精准感知每一次变化',
+    image: '/business-app.jpeg',
+    imageAlt: '智能健康硬件',
   },
 ];
 
@@ -57,7 +66,7 @@ export function BusinessSection() {
       ([entry]) => {
         if (entry.isIntersecting) setVisible(true);
       },
-      { threshold: 0.08 }
+      { threshold: 0.05 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -67,7 +76,7 @@ export function BusinessSection() {
     <section
       id="business"
       ref={ref}
-      className="scroll-mt-24 relative overflow-hidden py-24 lg:py-32"
+      className="scroll-mt-24 relative overflow-hidden py-24 lg:py-32 bg-muted/30"
     >
       {/* Floating decorations */}
       <div className="pointer-events-none absolute top-40 -left-20 h-[300px] w-[300px] rounded-full bg-primary/4 blur-3xl animate-float-slow" />
@@ -132,12 +141,12 @@ export function BusinessSection() {
         </div>
 
         {/* Product cards */}
-        <div className="space-y-8">
+        <div className="space-y-10">
           {products.map((product, i) => (
             <Card
               id={product.id}
               key={product.title}
-              className={`scroll-mt-24 group overflow-hidden border-border/50 transition-all duration-700 ease-out hover:shadow-lg hover:border-primary/20 ${
+              className={`scroll-mt-24 group overflow-hidden border-border/50 transition-all duration-700 ease-out hover:shadow-xl hover:border-primary/20 ${
                 visible
                   ? 'translate-y-0 opacity-100'
                   : i % 2 === 0 ? 'translate-x-8 opacity-0' : '-translate-x-8 opacity-0'
@@ -145,32 +154,36 @@ export function BusinessSection() {
               style={{ transitionDelay: `${(i + 1) * 150}ms` }}
             >
               <CardContent className="p-0">
-                <div className="grid md:grid-cols-5">
-                  {/* Left: Visual area */}
-                  <div className={`relative overflow-hidden flex items-center justify-center bg-gradient-to-br from-primary/8 to-primary/3 p-8 md:col-span-2 md:min-h-[340px] transition-all duration-500 group-hover:from-primary/12 group-hover:to-primary/5`}>
-                    {/* Animated ring */}
-                    <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-32 w-32 rounded-full border border-primary/10 animate-pulse-glow" />
-                    <div className="relative text-center">
+                <div className={`grid md:grid-cols-5 ${i % 2 === 1 ? 'md:[direction:rtl]' : ''}`}>
+                  {/* Left: Image area */}
+                  <div className={`relative overflow-hidden md:col-span-2 md:min-h-[380px]`}>
+                    <Image
+                      src={product.image}
+                      alt={product.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-background/60" />
+                    {/* Badge overlay */}
+                    <div className="absolute bottom-4 left-4 md:bottom-auto md:left-4 md:top-4">
                       <Badge
                         variant="secondary"
-                        className="mb-4 bg-primary/10 text-primary hover:bg-primary/15 transition-colors"
+                        className="bg-primary/90 text-primary-foreground hover:bg-primary transition-colors"
                       >
                         {product.tag}
                       </Badge>
-                      <h3 className="text-xl font-bold text-foreground transition-transform duration-300 group-hover:scale-105">
-                        {product.title}
-                      </h3>
-                      <p className="mt-2 text-sm font-medium text-primary">
-                        {product.highlight}
-                      </p>
                     </div>
                   </div>
 
                   {/* Right: Content */}
-                  <div className="p-8 md:col-span-3">
-                    <h4 className="mb-3 text-lg font-semibold text-card-foreground">
+                  <div className={`p-8 md:col-span-3 ${i % 2 === 1 ? 'md:[direction:ltr]' : ''}`}>
+                    <h3 className="mb-2 text-2xl font-bold text-card-foreground transition-transform duration-300 group-hover:translate-x-1">
+                      {product.title}
+                    </h3>
+                    <p className="mb-4 text-base font-semibold text-primary">
                       {product.headline}
-                    </h4>
+                    </p>
                     <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
                       {product.description}
                     </p>

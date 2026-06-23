@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 
 const coreAdvantages = [
@@ -66,8 +67,6 @@ const teamMembers = [
 
 export function AboutSection() {
   const [visible, setVisible] = useState(false);
-  const [cardVisible, setCardVisible] = useState(false);
-  const [teamVisible, setTeamVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -75,7 +74,7 @@ export function AboutSection() {
       ([entry]) => {
         if (entry.isIntersecting) setVisible(true);
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -89,34 +88,60 @@ export function AboutSection() {
     >
       {/* Subtle floating decoration */}
       <div className="pointer-events-none absolute top-20 right-10 h-[300px] w-[300px] rounded-full bg-primary/4 blur-3xl animate-float-slow" />
-      <div className="pointer-events-none absolute bottom-20 left-10 h-[200px] w-[200px] rounded-full bg-primary/3 blur-3xl animate-float" style={{ animationDelay: '2s' }} />
 
       <div className="mx-auto max-w-7xl px-6">
-        <div
-          className={`transition-all duration-700 ease-out ${
-            visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-          }`}
-        >
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
-            关于我们
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          {/* Left - text content */}
+          <div
+            className={`transition-all duration-700 ease-out ${
+              visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+            }`}
+          >
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+              关于我们
+            </div>
+            <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              靓健时代（西安）健康科技有限公司
+            </h2>
+            <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
+              有靓又健是一家专注于健康体重管理的新型科技公司，通过创新科技手段为用户提供专业服务。
+              我们通过&ldquo;科学管理 + 个性化服务 + 智能科技&rdquo;三位一体的模式，重新定义瘦身健康，为用户提供
+              体重管理、体态优化、营养规划及营养瘦身食品支持的全周期解决方案，拒绝极端减肥。
+            </p>
+            <p className="mb-6 text-base leading-relaxed text-muted-foreground">
+              以科学的方法帮助用户实现健康瘦身，满足用户对健康美丽生活的追求，打造&ldquo;健康美&rdquo;生活方式。
+              围绕公司核心业务，未来公司将发展为集团公司，下设食品公司、健康管理公司和硬件科技公司，
+              通过多元化发展拓展业务范围，提升公司综合实力。
+            </p>
           </div>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            靓健时代（西安）健康科技有限公司
-          </h2>
-          <p className="mb-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            有靓又健是一家专注于健康体重管理的新型科技公司，通过创新科技手段为用户提供专业服务。
-            我们通过&ldquo;科学管理 + 个性化服务 + 智能科技&rdquo;三位一体的模式，重新定义瘦身健康，为用户提供
-            体重管理、体态优化、营养规划及营养瘦身食品支持的全周期解决方案，拒绝极端减肥。
-          </p>
-          <p className="mb-12 max-w-3xl text-base leading-relaxed text-muted-foreground">
-            以科学的方法帮助用户实现健康瘦身，满足用户对健康美丽生活的追求，打造&ldquo;健康美&rdquo;生活方式。
-            围绕公司核心业务，未来公司将发展为集团公司，下设食品公司、健康管理公司和硬件科技公司，
-            通过多元化发展拓展业务范围，提升公司综合实力。
-          </p>
+
+          {/* Right - image */}
+          <div
+            className={`relative transition-all duration-1000 delay-300 ease-out ${
+              visible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'
+            }`}
+          >
+            <div className="relative overflow-hidden rounded-2xl shadow-xl">
+              <Image
+                src="/about-consultant.jpeg"
+                alt="专业健康管理咨询"
+                width={800}
+                height={600}
+                className="h-auto w-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
+            </div>
+            {/* Floating accent card */}
+            <div className="absolute -bottom-4 -left-4 rounded-xl border border-primary/20 bg-background/90 px-4 py-3 shadow-lg backdrop-blur-sm">
+              <div className="text-sm font-semibold text-primary">3位教授 · 4位博士</div>
+              <div className="text-xs text-muted-foreground">专家级创业团队</div>
+            </div>
+          </div>
         </div>
 
         {/* Core competitiveness */}
-        <div className="mb-12">
+        <div className="mt-16">
           <h3 className={`mb-6 text-xl font-bold text-foreground transition-all duration-700 delay-200 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             核心竞争力
           </h3>
@@ -129,7 +154,7 @@ export function AboutSection() {
                     ? 'translate-y-0 opacity-100'
                     : 'translate-y-8 opacity-0'
                 }`}
-                style={{ transitionDelay: `${300 + i * 150}ms` }}
+                style={{ transitionDelay: `${400 + i * 150}ms` }}
               >
                 <CardContent className="p-6">
                   <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary/15 group-hover:scale-110 group-hover:rotate-3">
@@ -150,7 +175,7 @@ export function AboutSection() {
         {/* Team highlight */}
         <div
           id="team"
-          className={`scroll-mt-24 relative overflow-hidden rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/5 via-primary/3 to-primary/8 p-8 transition-all duration-700 ease-out delay-500 ${
+          className={`scroll-mt-24 relative mt-16 overflow-hidden rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/5 via-primary/3 to-primary/8 p-8 transition-all duration-700 ease-out delay-500 ${
             visible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
@@ -159,26 +184,44 @@ export function AboutSection() {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent animate-shimmer" style={{ animationDuration: '4s' }} />
           </div>
 
-          <h3 className="relative mb-4 text-xl font-bold text-foreground">专家团队</h3>
-          <p className="relative mb-6 text-base leading-relaxed text-muted-foreground">
-            拥有团结有力的人才团队：团队成员有3位专家教授（西安交通大学医学院教授和陕西中医药大学教授），
-            4位博士，有使命感且精通管理和营销的创始人，经验丰富的软件工程师，以及在减肥代餐行业深耕10多年的行业销售人才，
-            形成了集技术、管理、营销为一体的专家创业团队。
-          </p>
-          <div className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {teamMembers.map((member, i) => (
-              <div
-                key={member.name}
-                className={`group rounded-xl border border-border/50 bg-card/80 p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-md hover:border-primary/20 ${
-                  visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-                }`}
-                style={{ transitionDelay: `${700 + i * 100}ms` }}
-              >
-                <div className="mb-1 text-base font-semibold text-card-foreground transition-colors group-hover:text-primary">{member.name}</div>
-                <div className="mb-1 text-xs font-medium text-primary">{member.title}</div>
-                <div className="text-xs text-muted-foreground">{member.desc}</div>
+          <div className="relative grid items-start gap-8 lg:grid-cols-3">
+            {/* Team intro */}
+            <div className="lg:col-span-1">
+              <h3 className="mb-4 text-xl font-bold text-foreground">专家团队</h3>
+              <p className="mb-4 text-base leading-relaxed text-muted-foreground">
+                拥有团结有力的人才团队：团队成员有3位专家教授（西安交通大学医学院教授和陕西中医药大学教授），
+                4位博士，有使命感且精通管理和营销的创始人，经验丰富的软件工程师，以及在减肥代餐行业深耕10多年的行业销售人才，
+                形成了集技术、管理、营销为一体的专家创业团队。
+              </p>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                <Image
+                  src="/business-yoga.jpeg"
+                  alt="健康生活方式"
+                  width={800}
+                  height={600}
+                  className="h-auto w-full object-cover"
+                />
               </div>
-            ))}
+            </div>
+
+            {/* Team members */}
+            <div className="lg:col-span-2">
+              <div className="grid gap-4 sm:grid-cols-2">
+                {teamMembers.map((member, i) => (
+                  <div
+                    key={member.name}
+                    className={`group rounded-xl border border-border/50 bg-card/80 p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-md hover:border-primary/20 ${
+                      visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                    }`}
+                    style={{ transitionDelay: `${700 + i * 100}ms` }}
+                  >
+                    <div className="mb-1 text-base font-semibold text-card-foreground transition-colors group-hover:text-primary">{member.name}</div>
+                    <div className="mb-1 text-xs font-medium text-primary">{member.title}</div>
+                    <div className="text-xs text-muted-foreground">{member.desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

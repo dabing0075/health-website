@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 function useCountUp(end: number, duration: number, start: boolean) {
@@ -46,90 +47,125 @@ export function HeroSection() {
       ref={ref}
       className="relative flex min-h-screen items-center justify-center overflow-hidden"
     >
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/8 via-primary/3 to-background animate-gradient-shift" />
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/hero-main.jpeg"
+          alt="阳光健康生活"
+          fill
+          priority
+          quality={90}
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        {/* Gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30" />
+      </div>
 
       {/* Floating decorative circles */}
-      <div className="pointer-events-none absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-primary/5 blur-3xl animate-float" />
-      <div className="pointer-events-none absolute -bottom-60 -left-60 h-[600px] w-[600px] rounded-full bg-primary/3 blur-3xl animate-float-slow" />
-      
-      {/* Small floating orbs */}
-      <div className="pointer-events-none absolute top-1/4 left-[10%] h-3 w-3 rounded-full bg-primary/20 animate-float" style={{ animationDelay: '1s' }} />
-      <div className="pointer-events-none absolute top-1/3 right-[15%] h-2 w-2 rounded-full bg-primary/25 animate-float-slow" style={{ animationDelay: '2s' }} />
-      <div className="pointer-events-none absolute bottom-1/3 left-[20%] h-4 w-4 rounded-full bg-primary/15 animate-float" style={{ animationDelay: '3s' }} />
-      <div className="pointer-events-none absolute top-[60%] right-[8%] h-2.5 w-2.5 rounded-full bg-primary/20 animate-float-slow" style={{ animationDelay: '0.5s' }} />
-
-      {/* Slow-rotating subtle ring */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full border border-primary/5 animate-spin-slow" />
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] w-[800px] rounded-full border border-primary/3 animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '30s' }} />
+      <div className="pointer-events-none absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-primary/8 blur-3xl animate-float" />
+      <div className="pointer-events-none absolute -bottom-60 -left-60 h-[600px] w-[600px] rounded-full bg-primary/5 blur-3xl animate-float-slow" />
 
       <div
-        className={`relative mx-auto max-w-4xl px-6 text-center transition-all duration-1000 ease-out ${
+        className={`relative z-10 mx-auto max-w-5xl px-6 transition-all duration-1000 ease-out ${
           visible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
         }`}
       >
-        {/* Tag badge */}
-        <div
-          className={`mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm text-primary transition-all duration-700 delay-200 ${
-            visible ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'
-          }`}
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-          科学瘦身 · 健康生活方式
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          {/* Left content */}
+          <div>
+            {/* Tag badge */}
+            <div
+              className={`mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm text-primary backdrop-blur-sm transition-all duration-700 delay-200 ${
+                visible ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'
+              }`}
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+              科学瘦身 · 健康生活方式
+            </div>
+
+            {/* Title with staggered reveal */}
+            <h1 className="mb-6 text-4xl leading-tight font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              <span
+                className={`inline-block transition-all duration-700 delay-300 ${
+                  visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                }`}
+              >
+                有靓又健
+              </span>
+              <br />
+              <span
+                className={`inline-block text-primary transition-all duration-700 delay-500 ${
+                  visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                }`}
+              >
+                让人们健康美丽生活
+              </span>
+            </h1>
+
+            {/* Description */}
+            <p
+              className={`mb-4 max-w-xl text-lg leading-relaxed text-muted-foreground transition-all duration-700 delay-700 ${
+                visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+            >
+              靓健时代（西安）健康科技有限公司，通过&ldquo;科学管理 + 个性化服务 + 智能科技&rdquo;三位一体的模式，
+              为用户提供体重管理、体态优化、营养规划及营养瘦身食品支持的全周期解决方案，拒绝极端减肥。
+            </p>
+            <p
+              className={`mb-10 text-base font-medium text-foreground/80 transition-all duration-700 delay-[800ms] ${
+                visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+            >
+              Beauty Meets Wellness — 让美丽与健康相遇
+            </p>
+
+            {/* CTA Buttons */}
+            <div
+              className={`flex flex-col items-start justify-center gap-4 sm:flex-row transition-all duration-700 delay-[900ms] ${
+                visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+            >
+              <Button size="lg" className="min-w-[160px] transition-transform hover:scale-105 active:scale-95" asChild>
+                <a href="#business">了解我们的服务</a>
+              </Button>
+              <Button size="lg" variant="outline" className="min-w-[160px] transition-transform hover:scale-105 active:scale-95" asChild>
+                <a href="#about">关于我们</a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Right side - decorative area with stats */}
+          <div className="hidden lg:block">
+            <div className="relative">
+              {/* Glowing ring behind stats */}
+              <div className="pointer-events-none absolute -inset-8 rounded-full border border-primary/10 animate-spin-slow" />
+
+              {/* Stats with counter animation */}
+              <div className="space-y-6 rounded-2xl border border-primary/10 bg-background/60 p-8 backdrop-blur-md">
+                <h3 className="text-lg font-semibold text-foreground">行业关键数据</h3>
+                {stats.map((stat, i) => (
+                  <div
+                    key={stat.label}
+                    className={`flex items-center gap-4 transition-all duration-700 ${
+                      visible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
+                    }`}
+                    style={{ transitionDelay: `${1000 + i * 200}ms` }}
+                  >
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <span className="text-xl font-bold">{counts[i]}{stat.suffix}</span>
+                    </div>
+                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Title with staggered reveal */}
-        <h1 className="mb-6 text-4xl leading-tight font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-          <span
-            className={`inline-block transition-all duration-700 delay-300 ${
-              visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-            }`}
-          >
-            有靓又健
-          </span>
-          <br />
-          <span
-            className={`inline-block text-primary transition-all duration-700 delay-500 ${
-              visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-            }`}
-          >
-            让人们健康美丽生活
-          </span>
-        </h1>
-
-        {/* Description */}
-        <p
-          className={`mx-auto mb-4 max-w-2xl text-lg leading-relaxed text-muted-foreground transition-all duration-700 delay-700 ${
-            visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-          }`}
-        >
-          靓健时代（西安）健康科技有限公司，通过&ldquo;科学管理 + 个性化服务 + 智能科技&rdquo;三位一体的模式，
-          为用户提供体重管理、体态优化、营养规划及营养瘦身食品支持的全周期解决方案，拒绝极端减肥。
-        </p>
-        <p
-          className={`mx-auto mb-10 text-base font-medium text-foreground/80 transition-all duration-700 delay-[800ms] ${
-            visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-          }`}
-        >
-          Beauty Meets Wellness — 让美丽与健康相遇
-        </p>
-
-        {/* CTA Buttons */}
-        <div
-          className={`flex flex-col items-center justify-center gap-4 sm:flex-row transition-all duration-700 delay-[900ms] ${
-            visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-          }`}
-        >
-          <Button size="lg" className="min-w-[160px] transition-transform hover:scale-105 active:scale-95" asChild>
-            <a href="#business">了解我们的服务</a>
-          </Button>
-          <Button size="lg" variant="outline" className="min-w-[160px] transition-transform hover:scale-105 active:scale-95" asChild>
-            <a href="#about">关于我们</a>
-          </Button>
-        </div>
-
-        {/* Stats with counter animation */}
-        <div className="mt-16 grid grid-cols-3 gap-8 border-t border-border pt-10">
+        {/* Mobile stats */}
+        <div className="mt-12 grid grid-cols-3 gap-4 border-t border-border/50 pt-8 lg:hidden">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
@@ -138,10 +174,10 @@ export function HeroSection() {
               }`}
               style={{ transitionDelay: `${1000 + i * 200}ms` }}
             >
-              <div className="text-2xl font-bold text-primary sm:text-3xl">
+              <div className="text-xl font-bold text-primary sm:text-2xl">
                 {counts[i]}{stat.suffix}
               </div>
-              <div className="mt-1 text-sm text-muted-foreground">
+              <div className="mt-1 text-xs text-muted-foreground">
                 {stat.label}
               </div>
             </div>
