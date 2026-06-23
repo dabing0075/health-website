@@ -35,7 +35,7 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <Link href="/" className="inline-block">
-              <span className="text-2xl font-bold text-primary">靓健时代</span>
+              <span className="text-2xl font-bold text-primary">有靓又健</span>
             </Link>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               靓健时代（西安）健康科技有限公司

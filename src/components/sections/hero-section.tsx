@@ -31,7 +31,7 @@ export function HeroSection() {
         </div>
 
         <h1 className="mb-6 text-4xl leading-tight font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-          靓健时代
+          有靓又健
           <br />
           <span className="text-primary">让人们健康美丽生活</span>
         </h1>
